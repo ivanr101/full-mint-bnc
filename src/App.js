@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+// import injected from './components/wallet/connector';
+// import { useWeb3React } from '@web3-react/core';
+import NavBar from './NavBar';
+import MainMint from './MainMint';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [accounts, setAccounts] = useState([]);
+	// const { active, account, library, connector, activate, deactivate } = useWeb3React()
+
+	// async function connect() {
+	// 	try {
+	// 		await activate(injected);
+	// 	} catch (ex) {
+	// 		console.log(ex);
+	// 	}
+	// }
+
+	return (
+		<div className="App">
+      <NavBar accounts={accounts} setAccounts={setAccounts}/>
+      <MainMint accounts={accounts} setAccounts={setAccounts}/>
+		</div>
+
+	);
 }
 
 export default App;
